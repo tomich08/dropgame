@@ -11,20 +11,21 @@ function Drop(){
 	*	The create method does lots of things when a drop gets created on the page
 	*/
 	this.create = function(){
-		//make an <img> tag in the HTML, store it into the item-on-page we set up above.
+		//make a section tag in the HTML, store it into the item-on-page we set up above.
 		this.item_on_page = document.createElement("section");
+		//give it a class which styles it in CSS to resemble a drop
 		this.item_on_page.className = "raindrop";
 		//store a random x and y position, different for each drop. I'm using screen width or 500, height of 300:
 		this.x = Math.floor(Math.random()*500);
 		this.y = Math.floor(Math.random()*300);
-		//use those x and y coordinates in the CSS to position the drops:
+		//use those x and y coordinates in the CSS to position the drop:
 		this.item_on_page.style.left = this.x + "px";
 		this.item_on_page.style.top = this.y + "px";
 		//attach the item to our HTML hierarchy, as a child of the body:
 		document.getElementsByTagName("body")[0].appendChild(this.item_on_page);
 	}
 	/** 
-	*   The destroy function does lots of things when a drop is removed from the page
+	*   The destroy function does lots of cleaning up when a drop is removed from the page
 	*/
 	this.destroy = function(){
 		
