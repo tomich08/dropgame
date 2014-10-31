@@ -8,21 +8,21 @@ function Drop(){
 	this.y; //starts empty, will keep track of each drop's up-down position as a #
 	this.item_on_page; //represents drop's physical presence on the screen
 	/** 
-	*	The create method does lots of things when a drop gets created on the page
+	*	The create method creates a DIV that looks like a blue drop on the page
 	*/
 	this.create = function(){
-		//make a section tag in the HTML, store it into the item-on-page we set up above.
-		this.item_on_page = document.createElement("section");
+		//make a div tag in the HTML, store it into the item-on-page we set up above.
+		this.item_on_page = document.createElement("div");
 		//give it a class which styles it in CSS to resemble a drop
 		this.item_on_page.className = "raindrop";
-		//store a random x and y position, different for each drop. I'm using screen width or 500, height of 300:
-		this.x = Math.floor(Math.random()*500);
-		this.y = Math.floor(Math.random()*300);
+		//store a random x and y position, different for each drop. I'm using screen width of 800, height of 600:
+		this.x = Math.floor(Math.random()*800);
+		this.y = Math.floor(Math.random()*600);
 		//use those x and y coordinates in the CSS to position the drop:
 		this.item_on_page.style.left = this.x + "px";
 		this.item_on_page.style.top = this.y + "px";
 		//attach the item to our HTML hierarchy, as a child of the body:
-		document.getElementsByTagName("body")[0].appendChild(this.item_on_page);
+		document.body.appendChild(this.item_on_page);
 	}
 	/** 
 	*   The destroy function does lots of cleaning up when a drop is removed from the page
@@ -39,4 +39,7 @@ function init() {
 	//make an object that's an instance of the Drop Class:
 	var drop1 = new Drop();
 	drop1.create();
+	//make an object that's an instance of the Drop Class:
+	var drop2 = new Drop();
+	drop2.create();
 }
